@@ -1,24 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const Formredirect = () => {
+function Formredirect() {
   return (
-    <div className="mt-5 flex flex-col items-center">
-      <p className="header text-[44px] font-bold">
+    <div
+      className="pt-20 h-screen w-full flex flex-col items-center font-inter gap-y-16"
+      style={{ backgroundColor: "white" }}
+    >
+      <p className=" font-inter text-3xl md:text-4xl font-semibold text-center ">
         Registration form for OSMHack2023
       </p>
-      <div
-        className="flex flex-col flex-wrap gap-5 mt-[5rem] items-center
-      "
-      >
-        <a href="https://forms.gle/nh8JywfHmHEfZFRQ8" target="_" className=" text-white px-3 py-3 bg-blue-800 max-w-[20rem] w-[15rem]">
-          Apply through google forms
-        </a>
-        <p className="text-[3rem] font-bold ">OR</p>
+      <div className="flex flex-col flex-wrap gap-5 mt-10 items-center">
         <Link to="/form">
-          <p className="bg-btn px-3 py-3 text-white max-w-[20rem] w-[15rem]">Apply through website</p>
+          <p className="bg-btn   text-center text-xl md:text-2xl  bg-dblue text-white p-6 hover:bg-dgreen focus:ring  active:translate-y-1">
+            Apply through website
+          </p>
         </Link>
+        <p className="text-2xl ">OR</p>
+        <a
+          href="https://forms.gle/nh8JywfHmHEfZFRQ8"
+          target="_"
+          className=" text-center text-xl md:text-2xl bg-rednew text-white p-6 hover:bg-dgreen  active:translate-y-1"
+        >
+          Apply through Google Forms
+        </a>
       </div>
     </div>
   );
-};
+}
+
+export default Formredirect;

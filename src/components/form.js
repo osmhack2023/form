@@ -27,7 +27,7 @@ export const Form = () => {
     var allowedExtensions = /(\.pdf|\.png|\.jpg|\.jpeg|\.txt)$/i;
 
     if (!allowedExtensions.exec(filePath)) {
-      alert("Invalid file type");
+      alert("Invalid file type! Supported file types: pdf, png, jpg, txt.");
       fileInput.value = "";
       return false;
     }
@@ -505,6 +505,7 @@ export const Form = () => {
               required={true}
               ref={fileRef}
             />
+            <span><em>* Supported file types: pdf, txt, jpg, png.</em></span>
 
             <div className="flex gap-5 items-center justify-center">
               <input

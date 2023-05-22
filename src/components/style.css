@@ -1,0 +1,228 @@
+.logo-img {
+  width: 10rem;
+}
+
+
+
+
+
+
+
+.nav-register:link,
+.nav-register:active {
+  display: inline-block;
+  border-radius: 0.8rem;
+  background-color: #e03131;
+  font-size: 2.4rem;
+  padding: 0.4rem 0.8rem;
+  color: #fff;
+}
+
+.nav-register:hover,
+.nav-register:active {
+  border: 1px solid #00f;
+}
+
+/* hero-section */
+.hero-container {
+  /* position: absolute; */
+  width: 100%;
+  /* top:5rem; */
+  z-index: -1;
+
+  height: 35rem;
+  text-align: center;
+  padding: 10rem;
+
+  color: #fff;
+  text-shadow: -1px 2px 2px rgba(0, 0, 0, 1);
+
+  background-image: linear-gradient(rgba(0, 0, 255, 0), rgba(0, 0, 255, 0.2)),
+    url(img2/heroda.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.title {
+  font-size: 6.4rem;
+  text-decoration: underline;
+  margin-bottom: 1rem;
+}
+
+.motto {
+  font-size: 3.2rem;
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: 1.6px;
+  word-spacing: 2px;
+
+  border: 2px solid #fff;
+  display: inline;
+  padding: 0.5rem 1rem;
+  box-shadow: 1px 3px 3px rgba(0, 0, 0, 1);
+}
+
+.hero-details {
+  /* margin-top: 18rem; */
+  display: flex;
+  justify-content: space-between;
+  font-size: 2.4rem;
+}
+
+/* description section  */
+.description-section {
+  /* margin-top: 60vh; */
+  background-color: #e7f5ff;
+  padding-bottom: 2rem;
+}
+
+.description {
+  width: 720px;
+  padding: 5.4rem;
+  padding-bottom: 1.6rem;
+  margin: 0 auto;
+
+  font-size: 1.8rem;
+  line-height: 1.6;
+}
+
+.description p {
+  margin-bottom: 1.8rem;
+}
+
+.description-section a {
+  display: flex;
+
+  border-radius: 0.8rem;
+  border: 1px solid #00f;
+  background-color: #e03131;
+  font-size: 2.4rem;
+  padding: 1.6rem 2.4rem;
+  color: #fff;
+  margin-left: auto;
+  margin-right: 12.4rem;
+  width: 21rem;
+}
+
+.description-section a:link,
+.description-section a:visited {
+  text-decoration: none;
+}
+
+/* schedule section  */
+.schedule {
+  text-align: center;
+  margin: 2rem;
+}
+
+.schedule img {
+  width: 46.2rem;
+}
+
+/* prize section  */
+.prize {
+  text-align: center;
+  background-color: #e7f5ff;
+  padding: 2rem;
+}
+
+/* organizers section  */
+.organizers {
+  text-align: center;
+  font-size: 3.2rem;
+  text-transform: uppercase;
+  text-shadow: 1px 3px 0 yellow;
+
+  margin: 3.2rem;
+}
+
+.organizer-text {
+  margin-bottom: 2.8rem;
+}
+
+/* sponsors section  */
+.sponsors {
+  text-align: center;
+  background-color: #e7f5ff;
+  font-size: 3.2rem;
+  text-transform: uppercase;
+  text-shadow: 1px 3px 0 yellow;
+
+  padding: 3.2rem;
+}
+
+.sponsor-heading {
+  margin-bottom: 2.8rem;
+}
+
+/* supporting organizations section */
+.supporters {
+  text-align: center;
+
+  font-size: 2.8rem;
+  text-transform: uppercase;
+  text-shadow: 1px 3px 0 yellow;
+
+  padding: 3.2rem;
+}
+
+.supporter-heading {
+  margin-bottom: 2.8rem;
+}
+
+.supporters img {
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* footer section  */
+.footer {
+  font-family: "Akshar", sans-serif;
+  background-color: #989898;
+  color: #fff;
+  padding: 2.8rem 1.2rem;
+  font-size: 2rem;
+
+  display: flex;
+  gap: 16rem;
+  justify-content: space-around;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.footer p {
+  margin-left: 2rem;
+}
+
+.left {
+  width: 35%;
+}
+
+.left h2,
+.right h2 {
+  font-size: 2.4rem;
+  text-transform: uppercase;
+  text-decoration: underline;
+  margin-bottom: 1.2rem;
+}
+
+.tel {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.web-and-yt {
+  display: flex;
+  gap: 5rem;
+}
+
+.icon {
+  height: 2.4rem;
+  width: 2.4rem;
+  margin-right: 0.8rem;
+}

@@ -24,7 +24,7 @@ export const Form = () => {
     var filePath = fileInput.value;
 
     // Allowing file type
-    var allowedExtensions = /(\.pdf|\.png|\.jpg|\.jpeg)$/i;
+    var allowedExtensions = /(\.pdf|\.png|\.jpg|\.jpeg|\.txt)$/i;
 
     if (!allowedExtensions.exec(filePath)) {
       alert("Invalid file type");
@@ -65,7 +65,7 @@ export const Form = () => {
     let formData = new FormData();
     formData.append("token", token);
     // submit to backend API endpoint here
-    const response = await fetch("http://v.osac.org.np:9000/api/submit/", {
+    const response = await fetch("https://v.osac.org.np:9000/api/submit/", {
       method: "POST",
       body: formData,
       mode: "cors",
@@ -501,8 +501,9 @@ export const Form = () => {
               type="file"
               name="proposal"
               id="kj"
-              onChange={(event) => getimg(event)}
+              onChange={(event) => {getimg(event); fileValidation();}}
               required={true}
+              ref={fileRef}
             />
 
             <div className="flex gap-5 items-center justify-center">

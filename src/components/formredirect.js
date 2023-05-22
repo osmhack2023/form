@@ -11,12 +11,6 @@ function Formredirect() {
         Registration form for OSMHack2023
       </p>
       <div className="flex flex-col flex-wrap gap-5 mt-10 items-center">
-        <Link to="/form">
-          <p className="bg-btn   text-center text-xl md:text-2xl  bg-dblue text-white p-6 hover:bg-dgreen focus:ring  active:translate-y-1">
-            Apply through website
-          </p>
-        </Link>
-        <p className="text-2xl ">OR</p>
         <a
           href="https://forms.gle/nh8JywfHmHEfZFRQ8"
           target="_"
@@ -24,6 +18,13 @@ function Formredirect() {
         >
           Apply through Google Forms
         </a>
+        <p className="text-2xl ">OR</p>
+        <Link to="/form">
+          <p className="bg-btn   text-center text-xl md:text-2xl  bg-dblue text-white p-6 hover:bg-dgreen focus:ring  active:translate-y-1">
+            Apply through Website
+          </p>
+        </Link>
+
       </div>
     </div>
   );

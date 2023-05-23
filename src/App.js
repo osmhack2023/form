@@ -5,6 +5,7 @@ import { Navbar } from "./components/navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Formredirect from "./components/formredirect";
 
+
 function App() {
   return (
     <div className="App bg-white">
@@ -12,6 +13,7 @@ function App() {
         <Navbar />
 
         <Routes>
+
           <Route exact path="/" element={<Formredirect />} />
           <Route exact path="/form" element={<Form />} />
         </Routes>

@@ -4,8 +4,9 @@ import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
 import { db } from "../config";
 import { doc, setDoc } from "firebase/firestore";
 import { useState } from "react";
-import Loader from "./microcomponents/loader";
+
 import ReCAPTCHA from "react-google-recaptcha";
+import BasicSelect from "./select";
 export const Form = () => {
   const siteKey = process.env.REACT_APP_reCAPTCHA_SITE_KEY;
   const recaptchaRef = React.createRef();
@@ -37,7 +38,12 @@ export const Form = () => {
   const handleclose = () => {
     setopen(false);
   };
-
+  const updateForDropdown = (name, value) => {
+    setData({
+      ...data,
+      [name]: value,
+    });
+  };
   //to update form data for database after each onchange event
   const update = (e) => {
     setData({
@@ -106,8 +112,8 @@ export const Form = () => {
                 };
 
                 fetch(
-                  "https://sheet.best/api/sheets/ff6db3c6-f2c3-41fc-bec0-05bc1b693381",
-                  // "https://sheet.best/api/sheets/802a7ace-8d3b-4de4-a311-61928b2bfc31",
+                  // "https://sheet.best/api/sheets/ff6db3c6-f2c3-41fc-bec0-05bc1b693381",
+                  "https://sheet.best/api/sheets/802a7ace-8d3b-4de4-a311-61928b2bfc31",
                   {
                     method: "POST",
                     mode: "cors",
@@ -271,24 +277,29 @@ export const Form = () => {
             onChange={update}
             required={true}
           />
-          <TextField
-            id="outlined-basic"
-            variant="outlined"
-            name="member1_vegornonveg"
-            label="Veg or Non-veg"
-            className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
-            required={true}
-          />
-          <TextField
-            id="outlined-basic"
-            variant="outlined"
-            name="member1_size"
-            label="T-shirt size(S/M/L)"
-            className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
-            required={true}
-          />
+          <div className="w-[45%] max-sm:w-[20rem]">
+            <BasicSelect
+              details={{
+                title: "food Preferences",
+                options: ["Veg", "Non-Veg"],
+                memberQueue: 1,
+                name: "member1_vegornonveg",
+              }}
+              update={updateForDropdown}
+            />
+          </div>
+
+          <div className="w-[45%] max-sm:w-[20rem]">
+            <BasicSelect
+              details={{
+                title: "T-Shirt Size",
+                options: ["small", "Medium", "large"],
+                memberQueue: 1,
+                name: "member1_size",
+              }}
+              update={updateForDropdown}
+            />
+          </div>
         </div>
         <p className="text-[34px] py-5 px-5">Member 2:</p>
         <div className="inputs flex flex-wrap gap-[15px] items-start justify-start px-5 py-5">
@@ -301,6 +312,7 @@ export const Form = () => {
             onChange={update}
             required={true}
           />
+          
           <TextField
             id="outlined-basic"
             variant="outlined"
@@ -328,24 +340,30 @@ export const Form = () => {
             onChange={update}
             required={true}
           />
-          <TextField
-            id="outlined-basic"
-            variant="outlined"
-            name="member2_vegornonveg"
-            label="Veg or Non-veg"
-            className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
-            required={true}
-          />
-          <TextField
-            id="outlined-basic"
-            variant="outlined"
-            name="member2_size"
-            label="T-shirt size(S/M/L)"
-            className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
-            required={true}
-          />
+
+          <div className="w-[45%] max-sm:w-[20rem]">
+            <BasicSelect
+              details={{
+                title: "food Preferences",
+                options: ["Veg", "Non-Veg"],
+                memberQueue: 2,
+                name: "member2_vegornonveg",
+              }}
+              update={updateForDropdown}
+            />
+          </div>
+
+          <div className="w-[45%] max-sm:w-[20rem]">
+            <BasicSelect
+              details={{
+                title: "T-Shirt Size",
+                options: ["small", "Medium", "large"],
+                memberQueue: 2,
+                name: "member2_size",
+              }}
+              update={updateForDropdown}
+            />
+          </div>
         </div>
         <p className=" text-[34px] py-5 px-5">Member 3:</p>
         <div className="inputs flex flex-wrap gap-[15px] items-start justify-start px-5 py-5">
@@ -381,22 +399,28 @@ export const Form = () => {
             className="w-[45%] max-sm:w-[20rem]"
             onChange={update}
           />
-          <TextField
-            id="outlined-basic"
-            variant="outlined"
-            name="member3_vegornonveg"
-            label="Veg or Non-veg"
-            className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
-          />
-          <TextField
-            id="outlined-basic"
-            variant="outlined"
-            name="member3_size"
-            label="T-shirt size(S/M/L)"
-            className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
-          />
+          <div className="w-[45%] max-sm:w-[20rem]">
+            <BasicSelect
+              details={{
+                title: "food Preferences",
+                options: ["Veg", "Non-Veg"],
+                memberQueue: 3,
+                name: "member3_vegornonveg",
+              }}
+              update={updateForDropdown}
+            />
+          </div>
+          <div className="w-[45%] max-sm:w-[20rem]">
+            <BasicSelect
+              details={{
+                title: "T-Shirt Size",
+                options: ["small", "Medium", "large"],
+                memberQueue: 3,
+                name: "member3_size",
+              }}
+              update={updateForDropdown}
+            />
+          </div>
         </div>
         <p className=" text-[34px] py-5 px-5">Member 4:</p>
         <div className="inputs flex flex-wrap gap-[15px] items-start justify-start px-5 py-5">
@@ -432,23 +456,29 @@ export const Form = () => {
             className="w-[45%] max-sm:w-[20rem]"
             onChange={update}
           />
-          <TextField
-            id="outlined-basic"
-            variant="outlined"
-            name="member4_vegornonveg"
-            label="Veg or Non-veg"
-            className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
-          />
-          <TextField
-            id="outlined-basic"
-            variant="outlined"
-            name="member4_size"
-            label="T-shirt size(S/M/L)"
-            className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
-            color="info"
-          />
+
+          <div className="w-[45%] max-sm:w-[20rem]">
+            <BasicSelect
+              details={{
+                title: "food Preferences",
+                options: ["Veg", "Non-Veg"],
+                memberQueue: 4,
+                name: "member4_vegornonveg",
+              }}
+              update={updateForDropdown}
+            />
+          </div>
+          <div className="w-[45%] max-sm:w-[20rem]">
+            <BasicSelect
+              details={{
+                title: "T-Shirt Size",
+                options: ["small", "Medium", "large"],
+                memberQueue: 4,
+                name: "member4_size",
+              }}
+              update={updateForDropdown}
+            />
+          </div>
         </div>
         <p className="text-[34px] py-5 px-5">Project Information:</p>
         <div className="inputs flex flex-wrap gap-[15px] items-start justify-start px-5 py-5">
@@ -501,11 +531,16 @@ export const Form = () => {
               type="file"
               name="proposal"
               id="kj"
-              onChange={(event) => {getimg(event); fileValidation();}}
+              onChange={(event) => {
+                getimg(event);
+                fileValidation();
+              }}
               required={true}
               ref={fileRef}
             />
-            <span><em>* Supported file types: pdf, txt, jpg, png.</em></span>
+            <span>
+              <em>* Supported file types: pdf, txt, jpg, png.</em>
+            </span>
 
             <div className="flex gap-5 items-center justify-center">
               <input
@@ -538,9 +573,13 @@ export const Form = () => {
       </form>
       <Snackbar
         open={open}
-        autoHideDuration={1000}
+        // autoHideDuration={1000}
         onClose={handleclose}
-        message={error1 === null || error2 === null ? "success" : "error"}
+        message={
+          error1 === null && error2 === null
+            ? "your form has been submitted successfully"
+            : "sorry try again..something wrong happened"
+        }
       />
     </div>
   );

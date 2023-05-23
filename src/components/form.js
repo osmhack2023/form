@@ -578,7 +578,7 @@ export const Form = () => {
         message={
           error1 === null && error2 === null
             ? "your form has been submitted successfully"
-            : "sorry try again..something wrong happened"
+            : "Something went Wrong, Try with google forms instead."
         }
       />
     </div>

@@ -1,14 +1,10 @@
 import React, { useRef } from "react";
 import { Snackbar, TextField } from "@mui/material";
-import { getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
-import { db } from "../config";
-import { doc, setDoc } from "firebase/firestore";
 import { useState } from "react";
 
 import ReCAPTCHA from "react-google-recaptcha";
 import BasicSelect from "./select";
 export const Form = () => {
-  const siteKey = process.env.REACT_APP_reCAPTCHA_SITE_KEY;
   const recaptchaRef = React.createRef();
   const formRef = useRef(); //ref of entire form component
   const fileRef = useRef(); //ref of file input field
@@ -17,6 +13,7 @@ export const Form = () => {
   // const [loading, setloading] = useState(false)
   const [open, setopen] = useState(false);
   const [data, setData] = React.useState({});
+  const [file, setFile] = React.useState(null);
 
   //to validate if the file submitted is int correct extensions
   const fileValidation = () => {
@@ -25,10 +22,10 @@ export const Form = () => {
     var filePath = fileInput.value;
 
     // Allowing file type
-    var allowedExtensions = /(\.pdf|\.png|\.jpg|\.jpeg|\.txt)$/i;
+    var allowedExtensions = /(\.pdf|\.png|\.jpg|\.jpeg|\.txt|\.docx)$/i;
 
     if (!allowedExtensions.exec(filePath)) {
-      alert("Invalid file type! Supported file types: pdf, png, jpg, txt.");
+      alert("Invalid file type! Supported file types: pdf, docx, png, jpg, txt.");
       fileInput.value = "";
       return false;
     }
@@ -52,102 +49,63 @@ export const Form = () => {
     });
   };
 
-  const storage = getStorage();
-
-  let fileItem;
-  let fileName;
-
-  //get file from input fild
-  const getimg = (e) => {
-    fileItem = e.target.files[0];
-    fileName = fileItem.name;
-  };
-
   //submit form
   const submit = async (e) => {
-    // setloading(true)
+    console.log("started")
     e.preventDefault();
     const token = await recaptchaRef.current.executeAsync();
+
     let formData = new FormData();
     formData.append("token", token);
+
     // submit to backend API endpoint here
     const response = await fetch("https://v.osac.org.np:9000/api/submit/", {
       method: "POST",
       body: formData,
       mode: "cors",
-    });
+    })
     const captchaResponse = await response.json();
+
     console.log("captchresponse", captchaResponse);
     console.log("first", captchaResponse.success);
+
     if (!captchaResponse.success) {
       seterror1(captchaResponse.message);
       return;
     }
-    console.log("file item", fileItem);
-    if (fileItem === undefined) {
+
+    console.log("file item", file);
+    if (file === undefined) {
       seterror1("error");
       setopen(true);
       return;
     }
-    const spaceRef = ref(storage, "proposal/" + fileName);
+    
+    const formDataFile = new FormData();
+    Object.entries(data).forEach(([key, value]) => {
+      formDataFile.append(key, value);
+    });
+    formDataFile.append('file', file)
 
-    uploadBytes(spaceRef, fileItem)
-      .then((snapshot) => {
-        console.log("Uploaded proposal!");
-        getDownloadURL(snapshot.ref).then(async (url) => {
-          // setimg(url);
-
-          try {
-            var createpost = async () => {
-              const id = data.name + data.email;
-
-              // Add a new document in collection "teams"
-              const adddoc = await setDoc(doc(db, "teams", id), {
-                data,
-                url: url,
-              }).then(() => {
-                const info = {
-                  ...data,
-                  url: url,
-                };
-
-                fetch(
-                  // "https://sheet.best/api/sheets/ff6db3c6-f2c3-41fc-bec0-05bc1b693381",
-                  "https://sheet.best/api/sheets/802a7ace-8d3b-4de4-a311-61928b2bfc31",
-                  {
-                    method: "POST",
-                    mode: "cors",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(info),
-                  }
-                )
-                  .then((r) => r.json())
-                  .then((data) => {
-                    // The response comes here
-                    console.log(data);
-                  })
-                  .catch((err) => {
-                    // Errors are reported there
-                    console.log(err);
-                    seterror1(err);
-                  });
-              });
-            };
-          } catch (err) {
-            console.log("the error is" + err);
-            seterror2(err);
-          }
-          createpost();
-        });
-      })
-      .then(() => {
+    console.log(formDataFile)
+    const formSubmit = await fetch(
+      "https://v.osac.org.np:9000/api/formsubmit/",
+      {
+        method: "POST",
+        mode: "cors",
+        body: formDataFile,
+      }
+    );
+    const formResponse = await formSubmit.json()
+    console.log(formResponse)
+    if (!formResponse.success){
+        seterror2(formResponse.message);
+    }else{
         setopen(true);
         formRef.current.reset();
-        // setloading(false)
-      });
+    }
   };
+
   return (
     <div className="form flex flex-col pt-5  h-[100vh] w-full px-20 gap-10 bg-white text-left">
       {/* <Loader open={open} /> */}
@@ -532,7 +490,7 @@ export const Form = () => {
               name="proposal"
               id="kj"
               onChange={(event) => {
-                getimg(event);
+                setFile(event.target.files[0]);
                 fileValidation();
               }}
               required={true}

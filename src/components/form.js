@@ -137,7 +137,7 @@ export const Form = () => {
             label="Full Name"
             variant="outlined"
             className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
+            onBlur={update}
             required={true}
           />
           <TextField
@@ -147,7 +147,7 @@ export const Form = () => {
             type="email"
             variant="outlined"
             className="w-[45%]  max-sm:w-[20rem]"
-            onChange={update}
+            onBlur={update}
             required={true}
           />
           {/* <TextField
@@ -180,7 +180,7 @@ export const Form = () => {
             name="address"
             variant="outlined"
             className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
+            onBlur={update}
             required={true}
           />
           <TextField
@@ -189,7 +189,7 @@ export const Form = () => {
             name="college_name"
             variant="outlined"
             className="w-[91%] max-sm:w-[20rem]"
-            onChange={update}
+            onBlur={update}
             required={true}
           />
         </div>
@@ -203,7 +203,7 @@ export const Form = () => {
             name="team_name"
             variant="outlined"
             className="w-[75%] max-sm:w-[20rem] "
-            onChange={update}
+            onBlur={update}
             required={true}
           />
           <TextField
@@ -215,7 +215,7 @@ export const Form = () => {
             className="w-[75%]  max-sm:w-[20rem]"
             rows={10}
             multiline={true}
-            onChange={update}
+            onBlur={update}
             required={true}
             inputProps={{
               minLength: 200,
@@ -232,7 +232,7 @@ export const Form = () => {
             name="member1_name"
             variant="outlined"
             className="w-[45%] max-sm:w-[20rem] "
-            onChange={update}
+            onBlur={update}
             required={true}
           />
           <TextField
@@ -242,7 +242,7 @@ export const Form = () => {
             label="Email"
             type="email"
             className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
+            onBlur={update}
             required={true}
           />
           {/* <TextField
@@ -269,7 +269,7 @@ export const Form = () => {
             name="member1_github"
             label="Github Profile"
             className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
+            onBlur={update}
           />
           <div className="w-[45%] max-sm:w-[20rem]">
             <BasicSelect
@@ -305,7 +305,7 @@ export const Form = () => {
             name="member2_name"
             variant="outlined"
             className="w-[45%] max-sm:w-[20rem] "
-            onChange={update}
+            onBlur={update}
             required={true}
           />
 
@@ -316,7 +316,7 @@ export const Form = () => {
             label="Email"
             type="email"
             className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
+            onBlur={update}
             required={true}
           />
           {/* <TextField
@@ -343,7 +343,7 @@ export const Form = () => {
             name="member2_github"
             label="Github Profile"
             className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
+            onBlur={update}
           />
 
           <div className="w-[45%] max-sm:w-[20rem]">
@@ -380,7 +380,7 @@ export const Form = () => {
             name="member3_name"
             variant="outlined"
             className="w-[45%] max-sm:w-[20rem] "
-            onChange={update}
+            onBlur={update}
           />
           <TextField
             id="outlined-basic"
@@ -389,7 +389,7 @@ export const Form = () => {
             label="Email"
             type="email"
             className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
+            onBlur={update}
           />
           {/* <TextField
             id="outlined-basic"
@@ -414,7 +414,7 @@ export const Form = () => {
             name="member3_github"
             label="Github Profile"
             className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
+            onBlur={update}
           />
           <div className="w-[45%] max-sm:w-[20rem]">
             <BasicSelect
@@ -448,7 +448,7 @@ export const Form = () => {
             label="Full Name"
             name="member4_name"
             variant="outlined"
-            onChange={update}
+            onBlur={update}
             className="w-[45%] max-sm:w-[20rem] "
           />
           <TextField
@@ -458,7 +458,7 @@ export const Form = () => {
             type="email"
             label="Email"
             className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
+            onBlur={update}
           />
           {/* <TextField
             id="outlined-basic"
@@ -483,7 +483,7 @@ export const Form = () => {
             name="member4_github"
             label="Github Profile"
             className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
+            onBlur={update}
           />
 
           <div className="w-[45%] max-sm:w-[20rem]">
@@ -519,7 +519,7 @@ export const Form = () => {
             name="project_name"
             label="Project Name"
             className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
+            onBlur={update}
             required={true}
           />
           <TextField
@@ -531,7 +531,7 @@ export const Form = () => {
             className="w-[75%]  max-sm:w-[20rem]"
             rows={10}
             multiline={true}
-            onChange={update}
+            onBlur={update}
             required={true}
             inputProps={{
               minLength: 200,

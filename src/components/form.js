@@ -189,7 +189,8 @@ export const Form = () => {
             id="outlined-basic"
             variant="outlined"
             name="short_description"
-            label="Short description of your team"
+            label="Team Description"
+            placeholder="Short description of your team"
             className="w-[75%]  max-sm:w-[20rem]"
             rows={10}
             multiline={true}
@@ -233,12 +234,11 @@ export const Form = () => {
             label="Github Profile"
             className="w-[45%] max-sm:w-[20rem]"
             onChange={update}
-            required={true}
           />
           <div className="w-[45%] max-sm:w-[20rem]">
             <BasicSelect
               details={{
-                title: "food Preferences",
+                title: "Food Preferences",
                 options: ["Veg", "Non-Veg"],
                 memberQueue: 1,
                 name: "member1_vegornonveg",
@@ -296,13 +296,12 @@ export const Form = () => {
             label="Github Profile"
             className="w-[45%] max-sm:w-[20rem]"
             onChange={update}
-            required={true}
           />
 
           <div className="w-[45%] max-sm:w-[20rem]">
             <BasicSelect
               details={{
-                title: "food Preferences",
+                title: "Food Preferences",
                 options: ["Veg", "Non-Veg"],
                 memberQueue: 2,
                 name: "member2_vegornonveg",
@@ -360,7 +359,7 @@ export const Form = () => {
           <div className="w-[45%] max-sm:w-[20rem]">
             <BasicSelect
               details={{
-                title: "food Preferences",
+                title: "Food Preferences",
                 options: ["Veg", "Non-Veg"],
                 memberQueue: 3,
                 name: "member3_vegornonveg",
@@ -418,7 +417,7 @@ export const Form = () => {
           <div className="w-[45%] max-sm:w-[20rem]">
             <BasicSelect
               details={{
-                title: "food Preferences",
+                title: "Food Preferences",
                 options: ["Veg", "Non-Veg"],
                 memberQueue: 4,
                 name: "member4_vegornonveg",
@@ -453,7 +452,8 @@ export const Form = () => {
             id="outlined-basic"
             variant="outlined"
             name="project_description"
-            label="A short description of your project (minimum 50 words)..."
+            placeholder="A short description of your project (minimum 50 words)..."
+            label="Project Description"
             className="w-[75%]  max-sm:w-[20rem]"
             rows={10}
             multiline={true}

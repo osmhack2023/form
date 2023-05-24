@@ -8,6 +8,7 @@ import Select from "@mui/material/Select";
 export default function BasicSelect({ details, update }) {
   const [option, setoption] = React.useState("");
   const obj = details;
+  
   const handleChange = (event) => {
     setoption(event.target.value);
     update(obj.name,event.target.value);
@@ -27,9 +28,10 @@ export default function BasicSelect({ details, update }) {
             handleChange(e);
             
           }}
-            required={
-              obj.memberQueue === 1 || obj.memberQueue === 2 ? true : false
-            }
+            // required={
+            //   obj.memberQueue === 1 || obj.memberQueue === 2 ? true : false
+            // }
+
         >
           {obj.options.map((element) => {
             return (

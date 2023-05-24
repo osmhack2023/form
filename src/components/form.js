@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import ReCAPTCHA from "react-google-recaptcha";
 import BasicSelect from "./select";
+import Telephone from "./tel";
 export const Form = () => {
   const recaptchaRef = React.createRef();
   const formRef = useRef(); //ref of entire form component
@@ -109,9 +110,9 @@ export const Form = () => {
   };
 
   return (
-    <div className="form flex flex-col pt-5  h-[100vh] w-full px-20 gap-10 bg-white text-left">
+    <div className="form flex flex-col pt-5  h-[100vh] w-full  gap-10 bg-white text-left px-5 max-[463px]:pl-2">
       {/* <Loader open={open} /> */}
-      <p className="header  font-semibold p-10 text-3xl md:text-5xl text-center font-inter">
+      <p className="header  font-semibold p-10 text-3xl md:text-5xl text-center font-inter self-center">
         Registration form for OSMHack2023
       </p>
       <p className="desc text-[24px] font-[500]">
@@ -123,11 +124,13 @@ export const Form = () => {
       </p>
       <form
         ref={formRef}
-        className="applicantInfo w-full justify-start items-start pb-[5rem] bg-white"
+        className="applicantInfo w-full  pb-[5rem] bg-white"
         onSubmit={submit}
       >
-        <p className="text-[34px] py-5 text-center">Applicant Information:</p>
-        <div className="inputs flex flex-wrap gap-[15px] items-start justify-start  py-5">
+        <p className="w-max max-md:text-[20px] text-[34px] py-5 text-center ">
+          Applicant Information:
+        </p>
+        <div className="inputs flex flex-wrap gap-[15px]   py-5">
           <TextField
             name="name"
             id="outlined-basic"
@@ -141,20 +144,36 @@ export const Form = () => {
             id="outlined-basic"
             name="email"
             label="Email"
+            type="email"
             variant="outlined"
             className="w-[45%]  max-sm:w-[20rem]"
             onChange={update}
             required={true}
           />
-          <TextField
+          {/* <TextField
             id="outlined-basic"
             name="phone_number"
             label="Phone Number"
             variant="outlined"
             className="w-[45%] max-sm:w-[20rem]"
+
             onChange={update}
+            type="tel"
+            pattern="[9]{1}[0-9]{9}"
+
+
             required={true}
-          />
+          /> */}
+          <div className="w-[45%] max-sm:w-[20rem]">
+            <Telephone
+              update={updateForDropdown}
+              details={{
+                name: "phone_number",
+                member_queue: 0,
+              }}
+            />
+          </div>
+          {/* <input type="tel" name="phone_number" className="w-[45%] max-sm:w-[20rem]" id="" pattern="[9]{1}[0-9]{9}"/> */}
           <TextField
             id="outlined-basic"
             label="Address"
@@ -174,10 +193,10 @@ export const Form = () => {
             required={true}
           />
         </div>
-        <p className="bg-white text-[34px] py-5 text-center">
+        <p className="bg-white w-max max-md:text-[20px] text-[34px] py-5 text-center">
           Team Information:
         </p>
-        <div className=" bg-white inputs flex flex-wrap gap-[15px] items-start justify-start  py-5">
+        <div className=" bg-white inputs flex flex-wrap gap-[15px]   py-5">
           <TextField
             id="outlined-basic"
             label="Team Name"
@@ -198,10 +217,15 @@ export const Form = () => {
             multiline={true}
             onChange={update}
             required={true}
+            inputProps={{
+              minLength: 200,
+            }}
           />
         </div>
-        <p className="text-[34px] py-5 text-left px-5">Member 1:</p>
-        <div className="inputs flex flex-wrap gap-[15px] items-start justify-start px-5 py-5">
+        <p className="w-max max-md:text-[20px] text-[34px] py-5 text-left px-5">
+          Member 1:
+        </p>
+        <div className="inputs flex flex-wrap gap-[15px]  px-5 py-5">
           <TextField
             id="outlined-basic"
             label="Full Name"
@@ -216,11 +240,12 @@ export const Form = () => {
             variant="outlined"
             name="member1_email"
             label="Email"
+            type="email"
             className="w-[45%] max-sm:w-[20rem]"
             onChange={update}
             required={true}
           />
-          <TextField
+          {/* <TextField
             id="outlined-basic"
             variant="outlined"
             name="member1_phone"
@@ -228,7 +253,16 @@ export const Form = () => {
             className="w-[45%] max-sm:w-[20rem]"
             onChange={update}
             required={true}
-          />
+          /> */}
+          <div className="w-[45%] max-sm:w-[20rem]">
+            <Telephone
+              update={updateForDropdown}
+              details={{
+                name: "member1_phone",
+                memberQueue: 1,
+              }}
+            />
+          </div>
           <TextField
             id="outlined-basic"
             variant="outlined"
@@ -261,8 +295,10 @@ export const Form = () => {
             />
           </div>
         </div>
-        <p className="text-[34px] py-5 px-5">Member 2:</p>
-        <div className="inputs flex flex-wrap gap-[15px] items-start justify-start px-5 py-5">
+        <p className="w-max max-md:text-[20px] text-[34px] py-5 px-5">
+          Member 2:
+        </p>
+        <div className="inputs flex flex-wrap gap-[15px]  px-5 py-5">
           <TextField
             id="outlined-basic"
             label="Full Name"
@@ -278,11 +314,12 @@ export const Form = () => {
             variant="outlined"
             name="member2_email"
             label="Email"
+            type="email"
             className="w-[45%] max-sm:w-[20rem]"
             onChange={update}
             required={true}
           />
-          <TextField
+          {/* <TextField
             id="outlined-basic"
             variant="outlined"
             name="member2_phone"
@@ -290,7 +327,16 @@ export const Form = () => {
             className="w-[45%] max-sm:w-[20rem]"
             onChange={update}
             required={true}
-          />
+          /> */}
+          <div className="w-[45%] max-sm:w-[20rem]">
+            <Telephone
+              update={updateForDropdown}
+              details={{
+                name: "member2_phone",
+                member_queue: 2,
+              }}
+            />
+          </div>
           <TextField
             id="outlined-basic"
             variant="outlined"
@@ -324,8 +370,10 @@ export const Form = () => {
             />
           </div>
         </div>
-        <p className=" text-[34px] py-5 px-5">Member 3:</p>
-        <div className="inputs flex flex-wrap gap-[15px] items-start justify-start px-5 py-5">
+        <p className=" w-max max-md:text-[20px] text-[34px] py-5 px-5">
+          Member 3:
+        </p>
+        <div className="inputs flex flex-wrap gap-[15px]  px-5 py-5">
           <TextField
             id="outlined-basic"
             label="Full Name"
@@ -339,17 +387,27 @@ export const Form = () => {
             variant="outlined"
             name="member3_email"
             label="Email"
+            type="email"
             className="w-[45%] max-sm:w-[20rem]"
             onChange={update}
           />
-          <TextField
+          {/* <TextField
             id="outlined-basic"
             variant="outlined"
             name="member3_phone"
             label="Phone Number"
             className="w-[45%] max-sm:w-[20rem]"
             onChange={update}
-          />
+          /> */}
+          <div className="w-[45%] max-sm:w-[20rem]">
+            <Telephone
+              update={updateForDropdown}
+              details={{
+                name: "member3_phone",
+                member_queue: 3,
+              }}
+            />
+          </div>
           <TextField
             id="outlined-basic"
             variant="outlined"
@@ -381,8 +439,10 @@ export const Form = () => {
             />
           </div>
         </div>
-        <p className=" text-[34px] py-5 px-5">Member 4:</p>
-        <div className="inputs flex flex-wrap gap-[15px] items-start justify-start px-5 py-5">
+        <p className=" w-max max-md:text-[20px] text-[34px] py-5 px-5">
+          Member 4:
+        </p>
+        <div className="inputs flex flex-wrap gap-[15px]  px-5 py-5">
           <TextField
             id="outlined-basic"
             label="Full Name"
@@ -395,18 +455,28 @@ export const Form = () => {
             id="outlined-basic"
             variant="outlined"
             name="member4_email"
+            type="email"
             label="Email"
             className="w-[45%] max-sm:w-[20rem]"
             onChange={update}
           />
-          <TextField
+          {/* <TextField
             id="outlined-basic"
             variant="outlined"
             name="member4_phone"
             label="Phone Number"
             className="w-[45%] max-sm:w-[20rem]"
             onChange={update}
-          />
+          /> */}
+          <div className="w-[45%] max-sm:w-[20rem]">
+            <Telephone
+              update={updateForDropdown}
+              details={{
+                name: "member4_phone",
+                member_queue: 4,
+              }}
+            />
+          </div>
           <TextField
             id="outlined-basic"
             variant="outlined"
@@ -439,8 +509,10 @@ export const Form = () => {
             />
           </div>
         </div>
-        <p className="text-[34px] py-5 px-5">Project Information:</p>
-        <div className="inputs flex flex-wrap gap-[15px] items-start justify-start px-5 py-5">
+        <p className="w-max max-md:text-[20px] text-[34px] py-5 px-5">
+          Project Information:
+        </p>
+        <div className="inputs flex flex-wrap gap-[15px]  px-5 py-5">
           <TextField
             id="outlined-basic"
             variant="outlined"
@@ -461,10 +533,15 @@ export const Form = () => {
             multiline={true}
             onChange={update}
             required={true}
+            inputProps={{
+              minLength: 200,
+            }}
           />
 
           <div className="proposal flex flex-col justify-start items-start w-full gap-5 mt-5">
-            <p className="text-[34px] py-5 ">Proposal File:</p>
+            <p className="w-max max-md:text-[20px] text-[34px] py-5 ">
+              Proposal File:
+            </p>
             <p className="text-xl font-semibold ">
               Drop a file explaining the projects in detail. Include following
               points:{" "}
@@ -519,7 +596,7 @@ export const Form = () => {
         </div>
 
         <button
-          className=" bg-btn w-max py-2 px-10 rounded-xl bg-dblue text-white text-2xl mt-5 ml-0 active:translate-y-1 hover:bg-dgreen"
+          className=" bg-btn w-max py-2 px-10   rounded-xl bg-dblue text-white text-2xl mt-5 ml-5 active:translate-y-1 hover:bg-dgreen"
           // onClick={submit}
         >
           Submit

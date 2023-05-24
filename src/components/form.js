@@ -25,7 +25,9 @@ export const Form = () => {
     var allowedExtensions = /(\.pdf|\.png|\.jpg|\.jpeg|\.txt|\.docx)$/i;
 
     if (!allowedExtensions.exec(filePath)) {
-      alert("Invalid file type! Supported file types: pdf, docx, png, jpg, txt.");
+      alert(
+        "Invalid file type! Supported file types: pdf, docx, png, jpg, txt."
+      );
       fileInput.value = "";
       return false;
     }
@@ -51,7 +53,7 @@ export const Form = () => {
 
   //submit form
   const submit = async (e) => {
-    console.log("started")
+    console.log("started");
     e.preventDefault();
     const token = await recaptchaRef.current.executeAsync();
 
@@ -63,7 +65,7 @@ export const Form = () => {
       method: "POST",
       body: formData,
       mode: "cors",
-    })
+    });
     const captchaResponse = await response.json();
 
     console.log("captchresponse", captchaResponse);
@@ -80,14 +82,14 @@ export const Form = () => {
       setopen(true);
       return;
     }
-    
+
     const formDataFile = new FormData();
     Object.entries(data).forEach(([key, value]) => {
       formDataFile.append(key, value);
     });
-    formDataFile.append('file', file)
+    formDataFile.append("file", file);
 
-    console.log(formDataFile)
+    console.log(formDataFile);
     const formSubmit = await fetch(
       "https://v.osac.org.np:9000/api/formsubmit/",
       {
@@ -96,13 +98,13 @@ export const Form = () => {
         body: formDataFile,
       }
     );
-    const formResponse = await formSubmit.json()
-    console.log(formResponse)
-    if (!formResponse.success){
-        seterror2(formResponse.message);
-    }else{
-        setopen(true);
-        formRef.current.reset();
+    const formResponse = await formSubmit.json();
+    console.log(formResponse);
+    if (!formResponse.success) {
+      seterror2(formResponse.message);
+    } else {
+      setopen(true);
+      formRef.current.reset();
     }
   };
 
@@ -251,7 +253,7 @@ export const Form = () => {
             <BasicSelect
               details={{
                 title: "T-Shirt Size",
-                options: ["small", "Medium", "large"],
+                options: ["Small", "Medium", "Large"],
                 memberQueue: 1,
                 name: "member1_size",
               }}
@@ -270,7 +272,7 @@ export const Form = () => {
             onChange={update}
             required={true}
           />
-          
+
           <TextField
             id="outlined-basic"
             variant="outlined"
@@ -314,7 +316,7 @@ export const Form = () => {
             <BasicSelect
               details={{
                 title: "T-Shirt Size",
-                options: ["small", "Medium", "large"],
+                options: ["Small", "Medium", "Large"],
                 memberQueue: 2,
                 name: "member2_size",
               }}
@@ -371,7 +373,7 @@ export const Form = () => {
             <BasicSelect
               details={{
                 title: "T-Shirt Size",
-                options: ["small", "Medium", "large"],
+                options: ["Small", "Medium", "Large"],
                 memberQueue: 3,
                 name: "member3_size",
               }}
@@ -429,7 +431,7 @@ export const Form = () => {
             <BasicSelect
               details={{
                 title: "T-Shirt Size",
-                options: ["small", "Medium", "large"],
+                options: ["Small", "Medium", "Large"],
                 memberQueue: 4,
                 name: "member4_size",
               }}

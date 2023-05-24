@@ -614,8 +614,8 @@ export const Form = () => {
         onClose={handleclose}
         message={
           error1 === null && error2 === null
-            ? "your form has been submitted successfully"
-            : "Something went Wrong, Try with google forms instead."
+            ? "Form Submitted Successfully!"
+            : "Something went Wrong :(, Try with google forms instead!"
         }
       />
     </div>

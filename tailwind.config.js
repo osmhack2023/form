@@ -28,7 +28,7 @@ module.exports = {
       rednew: "#E03131",
       bluenew: "#1971C2",
       gold: "#FFD95A",
-      silver: "#9BA4B5",
+
       bronze: "#482121",
       darkgrey: "#333333",
       green: "#38E54D",

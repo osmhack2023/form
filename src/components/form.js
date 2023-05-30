@@ -5,7 +5,13 @@ import { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import BasicSelect from "./select";
 import Telephone from "./tel";
+import { saveAs } from "file-saver";
+import { useDispatch } from "react-redux";
+import { reserActions } from "./reset";
 export const Form = () => {
+
+  const dispatch=useDispatch()
+  const telRef = useRef();
   const recaptchaRef = React.createRef();
   const formRef = useRef(); //ref of entire form component
   const fileRef = useRef(); //ref of file input field
@@ -15,6 +21,7 @@ export const Form = () => {
   const [open, setopen] = useState(false);
   const [data, setData] = React.useState({});
   const [file, setFile] = React.useState(null);
+
 
   //to validate if the file submitted is int correct extensions
   const fileValidation = () => {
@@ -33,6 +40,7 @@ export const Form = () => {
       return false;
     }
   };
+
 
   //close snackbar
   const handleclose = () => {
@@ -54,8 +62,10 @@ export const Form = () => {
 
   //submit form
   const submit = async (e) => {
-    console.log("started");
     e.preventDefault();
+    console.log("started");
+
+
     const token = await recaptchaRef.current.executeAsync();
 
     let formData = new FormData();
@@ -74,7 +84,10 @@ export const Form = () => {
 
     if (!captchaResponse.success) {
       seterror1(captchaResponse.message);
+
+      console.log(captchaResponse.error)
       return;
+
     }
 
     console.log("file item", file);
@@ -106,6 +119,8 @@ export const Form = () => {
     } else {
       setopen(true);
       formRef.current.reset();
+      dispatch(reserActions.resetState(true))
+
     }
   };
 
@@ -169,8 +184,9 @@ export const Form = () => {
               update={updateForDropdown}
               details={{
                 name: "phone_number",
-                member_queue: 0,
+                member_queue: true,
               }}
+
             />
           </div>
           {/* <input type="tel" name="phone_number" className="w-[45%] max-sm:w-[20rem]" id="" pattern="[9]{1}[0-9]{9}"/> */}
@@ -245,21 +261,13 @@ export const Form = () => {
             onChange={update}
             required={true}
           />
-          {/* <TextField
-            id="outlined-basic"
-            variant="outlined"
-            name="member1_phone"
-            label="Phone Number"
-            className="w-[45%] max-sm:w-[20rem]"
-            onChange={update}
-            required={true}
-          /> */}
+
           <div className="w-[45%] max-sm:w-[20rem]">
             <Telephone
               update={updateForDropdown}
               details={{
                 name: "member1_phone",
-                memberQueue: 1,
+                memberQueue: true,
               }}
             />
           </div>
@@ -333,7 +341,7 @@ export const Form = () => {
               update={updateForDropdown}
               details={{
                 name: "member2_phone",
-                member_queue: 2,
+                member_queue: true,
               }}
             />
           </div>
@@ -404,7 +412,7 @@ export const Form = () => {
               update={updateForDropdown}
               details={{
                 name: "member3_phone",
-                member_queue: 3,
+                member_queue: false,
               }}
             />
           </div>
@@ -473,7 +481,7 @@ export const Form = () => {
               update={updateForDropdown}
               details={{
                 name: "member4_phone",
-                member_queue: 4,
+                member_queue: false,
               }}
             />
           </div>
@@ -576,8 +584,11 @@ export const Form = () => {
               ref={fileRef}
             />
             <span>
-              <em>* Supported file types: pdf, txt, jpg, png.</em>
+              <em>* Supported file types: pdf,docx,txt, jpg, png.</em>
             </span>
+            <a
+
+             href="https://drive.google.com/file/d/1al2xo56p5Ys9K6Oo_DhqS6dxInooDQdY" target="_"  className="w-max px-2 py-2 rounded-xl cursor-pointer hover:bg-dgreen text-white bg-rednew">Get template of proposal</a>
 
             <div className="flex gap-5 items-center justify-center">
               <input

@@ -2,17 +2,14 @@ import React, { useRef } from "react";
 import { Snackbar, TextField } from "@mui/material";
 import { useState } from "react";
 
-import ReCAPTCHA from "react-google-recaptcha";
 import BasicSelect from "./select";
 import Telephone from "./tel";
-import { saveAs } from "file-saver";
+
 import { useDispatch } from "react-redux";
 import { reserActions } from "./reset";
 export const Form = () => {
 
   const dispatch=useDispatch()
-  const telRef = useRef();
-  const recaptchaRef = React.createRef();
   const formRef = useRef(); //ref of entire form component
   const fileRef = useRef(); //ref of file input field
   const [error1, seterror1] = useState(null);
@@ -65,31 +62,6 @@ export const Form = () => {
     e.preventDefault();
     console.log("started");
 
-
-    const token = await recaptchaRef.current.executeAsync();
-
-    let formData = new FormData();
-    formData.append("token", token);
-
-    // submit to backend API endpoint here
-    const response = await fetch("https://v.osac.org.np:9000/api/submit/", {
-      method: "POST",
-      body: formData,
-      mode: "cors",
-    });
-    const captchaResponse = await response.json();
-
-    console.log("captchresponse", captchaResponse);
-    console.log("first", captchaResponse.success);
-
-    if (!captchaResponse.success) {
-      seterror1(captchaResponse.message);
-
-      console.log(captchaResponse.error)
-      return;
-
-    }
-
     console.log("file item", file);
     if (file === undefined) {
       seterror1("error");
@@ -120,7 +92,6 @@ export const Form = () => {
       setopen(true);
       formRef.current.reset();
       dispatch(reserActions.resetState(true))
-
     }
   };
 
@@ -612,12 +583,6 @@ export const Form = () => {
         >
           Submit
         </button>
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          size="invisible"
-          sitekey="6LcNtCQmAAAAAJHXrxbe8UvoMPSwp6XHdR9Qo6cf"
-          // sitekey={siteKey}
-        />
       </form>
       <Snackbar
         open={open}

@@ -1,17 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.7b62a9f0.css",
-    "main.js": "/static/js/main.0f10ae93.js",
+    "main.css": "/static/css/main.772841c2.css",
+    "main.js": "/static/js/main.16b23001.js",
     "static/js/787.aeb39de0.chunk.js": "/static/js/787.aeb39de0.chunk.js",
     "static/media/osmLogo.png": "/static/media/osmLogo.1f114df740ed0b96d4b5.png",
-    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/index.html",
-    "main.7b62a9f0.css.map": "/static/css/main.7b62a9f0.css.map",
-    "main.0f10ae93.js.map": "/static/js/main.0f10ae93.js.map",
+    "main.772841c2.css.map": "/static/css/main.772841c2.css.map",
+    "main.16b23001.js.map": "/static/js/main.16b23001.js.map",
     "787.aeb39de0.chunk.js.map": "/static/js/787.aeb39de0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7b62a9f0.css",
-    "static/js/main.0f10ae93.js"
+    "static/css/main.772841c2.css",
+    "static/js/main.16b23001.js"
   ]
 }
